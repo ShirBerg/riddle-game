@@ -3,20 +3,22 @@ import AllRiddles from './riddles/allRiddles.js'
 import Player from './classes/Player.js';
 import Riddle from './classes/Riddle.js';
 import MultipleChoiceRiddle from './classes/MultipleChoiceRiddle.js';
-                 
+
 console.log("\n\n__________________________________________");
 console.log("\nWelcome to the Riddle Game!");
 console.log("-----------------------------");
 const playerName = readline.question(`\nWhat is your name? \n`);
 const player = new Player(playerName);
 console.log(`\nHello, ${playerName}! Lets start...`);
+const level = readline.question('\nChoose difficulty: Easy / Medium / Hard: ');   
 
-for (const riddleData of AllRiddles) {
+for (const riddleData of AllRiddles.filter(r => r.difficulty.toLowerCase() === level.toLowerCase())) {
     let riddle;
     if (riddleData.choices) {
         riddle = new MultipleChoiceRiddle(
             riddleData.id,
             riddleData.name,
+            riddleData.difficulty,
             riddleData.taskDescription,
             riddleData.correctAnswer,
             riddleData.choices
@@ -25,6 +27,7 @@ for (const riddleData of AllRiddles) {
         riddle = new Riddle(
             riddleData.id,
             riddleData.name,
+            riddleData.difficulty,
             riddleData.taskDescription,
             riddleData.correctAnswer
         );

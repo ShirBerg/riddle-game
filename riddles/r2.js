@@ -1,6 +1,7 @@
 export default {
   id: 2,
-  name: "Advenced Math",
+  name: "Math",
+  difficulty: "Medium",
   taskDescription: "What is 5 * 3?",
-  correctAnswer: "15"
+  correctAnswer:"15"
 };
